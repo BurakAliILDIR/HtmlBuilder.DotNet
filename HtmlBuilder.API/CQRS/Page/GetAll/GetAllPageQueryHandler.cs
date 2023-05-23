@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HtmlBuilder.API.CQRS.User.GetAll;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace HtmlBuilder.API.CQRS.Page.GetAll
@@ -18,15 +19,15 @@ namespace HtmlBuilder.API.CQRS.Page.GetAll
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public Task<GetAllPageQueryResponse> Handle(GetAllPageQueryRequest request, CancellationToken cancellationToken)
+        public async Task<GetAllPageQueryResponse> Handle(GetAllPageQueryRequest request, CancellationToken cancellationToken)
         {
             var userName = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var result = await _dbContext.Pages.Where(x => userName != x.UserName).ToListAsync();
+            var result = await _dbContext.Pages.ToListAsync();
 
-            var data = _mapper.Map<List<GetAllUserDto>>(result);
+            var data = _mapper.Map<List<GetAllPageDto>>(result);
 
-            return new GetAllUserQueryResponse() { Data = data };
+            return new GetAllPageQueryResponse() { Data = data };
         }
     }
 }
