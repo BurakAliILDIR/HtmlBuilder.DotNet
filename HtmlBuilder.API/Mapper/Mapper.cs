@@ -8,7 +8,8 @@ namespace HtmlBuilder.API.Mapper
     {
         public Mapper()
         {
-            CreateMap<AppUser, GetAllPageDto>();
+            CreateMap<AppUser, GetAllUserDto>();
+            CreateMap<Page, GetAllPageDto>();
         }
     }
 }
