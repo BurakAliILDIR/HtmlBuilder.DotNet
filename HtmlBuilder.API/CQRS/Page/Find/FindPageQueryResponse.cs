@@ -1,6 +1,8 @@
-﻿namespace HtmlBuilder.API.CQRS.Page.Find;
+﻿using HtmlBuilder.API.CQRS.Base;
 
-public class FindPageQueryResponse
+namespace HtmlBuilder.API.CQRS.Page.Find;
+
+public class FindPageQueryResponse: BaseResponse
 {
     
 }

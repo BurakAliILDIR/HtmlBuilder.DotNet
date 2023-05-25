@@ -1,6 +1,8 @@
-﻿namespace HtmlBuilder.API.CQRS.Page.Find;
+﻿using MediatR;
 
-public class FindPageQueryRequest
+namespace HtmlBuilder.API.CQRS.Page.Find;
+
+public class FindPageQueryRequest : IRequest<FindPageQueryResponse>
 {
-    
+    public string Id { get; set; }
 }

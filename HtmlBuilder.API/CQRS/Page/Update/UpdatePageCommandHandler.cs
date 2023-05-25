@@ -9,12 +9,10 @@ namespace HtmlBuilder.API.CQRS.Page.Update
     public class UpdatePageCommandHandler : IRequestHandler<UpdatePageCommandRequest, UpdatePageCommandResponse>
     {
         private readonly AppDbContext _dbContext;
-        private readonly IMapper _mapper;
 
-        public UpdatePageCommandHandler(AppDbContext dbContext, IMapper mapper)
+        public UpdatePageCommandHandler(AppDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
         public async Task<UpdatePageCommandResponse> Handle(UpdatePageCommandRequest request, CancellationToken cancellationToken)
@@ -25,6 +23,8 @@ namespace HtmlBuilder.API.CQRS.Page.Update
             page.Css = request.Css;
 
             _dbContext.Pages.Update(page);
+
+            await _dbContext.SaveChangesAsync();
 
             return new UpdatePageCommandResponse { };
         }

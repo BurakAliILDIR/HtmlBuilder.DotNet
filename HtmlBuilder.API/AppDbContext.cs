@@ -7,7 +7,6 @@ namespace HtmlBuilder.API
 {
     public class AppDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
-        public virtual DbSet<Layout> Layouts { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<Component> Components { get; set; }
         public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
