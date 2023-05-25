@@ -1,8 +1,8 @@
-﻿using HtmlBuilder.API.CQRS.Page.Find;
+﻿using HtmlBuilder.API.CQRS.Page.Add;
+using HtmlBuilder.API.CQRS.Page.Find;
 using HtmlBuilder.API.CQRS.Page.GetAll;
 using HtmlBuilder.API.CQRS.Page.Update;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HtmlBuilder.API.Controllers.Page
@@ -28,6 +28,14 @@ namespace HtmlBuilder.API.Controllers.Page
         public async Task<IActionResult> Find(string id)
         {
             var response = await _mediator.Send(new FindPageQueryRequest { Id = id });
+
+            return Ok(response);
+        }
+
+        [HttpPost("Add")]
+        public async Task<IActionResult> Add(AddPageCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
 
             return Ok(response);
         }

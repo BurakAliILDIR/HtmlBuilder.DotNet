@@ -10,6 +10,8 @@
         public Page()
         {
             Id = Guid.NewGuid().ToString();
+            Html = "";
+            Css = "";
         }
     }
 }
