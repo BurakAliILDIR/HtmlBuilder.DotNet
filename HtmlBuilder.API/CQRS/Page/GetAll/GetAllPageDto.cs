@@ -1,4 +1,4 @@
-﻿namespace HtmlBuilder.API.CQRS.User.GetAll
+﻿namespace HtmlBuilder.API.CQRS.Page.GetAll
 {
     public class GetAllPageDto
     {

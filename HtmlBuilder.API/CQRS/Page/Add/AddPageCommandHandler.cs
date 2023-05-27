@@ -2,11 +2,11 @@
 
 namespace HtmlBuilder.API.CQRS.Page.Add
 {
-    public class AddPageCommandHandler : IRequestHandler<AddPageCommandRequest, AddPageCommandResponse>
+    public class AddComponentCommandHandler : IRequestHandler<AddPageCommandRequest, AddPageCommandResponse>
     {
         private readonly AppDbContext _dbContext;
 
-        public AddPageCommandHandler(AppDbContext dbContext)
+        public AddComponentCommandHandler(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
