@@ -1,4 +1,5 @@
 ﻿using HtmlBuilder.API.CQRS.Page.Add;
+using HtmlBuilder.API.CQRS.Page.Delete;
 using HtmlBuilder.API.CQRS.Page.Find;
 using HtmlBuilder.API.CQRS.Page.GetAll;
 using HtmlBuilder.API.CQRS.Page.Update;
@@ -16,7 +17,7 @@ namespace HtmlBuilder.API.Controllers.Page
             _mediator = mediator;
         }
 
-        [HttpGet("Get")]
+        [HttpGet()]
         public async Task<IActionResult> Get()
         {
             var response = await _mediator.Send(new GetAllPageQueryRequest());
@@ -24,7 +25,7 @@ namespace HtmlBuilder.API.Controllers.Page
             return Ok(response);
         }
 
-        [HttpGet("Find/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Find(string id)
         {
             var response = await _mediator.Send(new FindPageQueryRequest { Id = id });
@@ -32,7 +33,7 @@ namespace HtmlBuilder.API.Controllers.Page
             return Ok(response);
         }
 
-        [HttpPost("Add")]
+        [HttpPost]
         public async Task<IActionResult> Add(AddPageCommandRequest request)
         {
             var response = await _mediator.Send(request);
@@ -40,10 +41,18 @@ namespace HtmlBuilder.API.Controllers.Page
             return Ok(response);
         }
 
-        [HttpPut("Update")]
+        [HttpPut]
         public async Task<IActionResult> Update(UpdatePageCommandRequest request)
         {
             var response = await _mediator.Send(request);
+
+            return Ok(response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var response = await _mediator.Send(new DeletePageCommandRequest { Id = id });
 
             return Ok(response);
         }
