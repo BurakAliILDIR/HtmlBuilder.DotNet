@@ -1,5 +1,4 @@
-﻿using HtmlBuilder.API.CQRS.User.GetAll;
-using MediatR;
+﻿using MediatR;
 
 namespace HtmlBuilder.API.CQRS.Component.GetAll
 {

@@ -8,7 +8,7 @@
         public string Content { get; set; }
 
         public Component() {
-            Id = Label.ToLower().Replace(' ', '-');
+            Id = Guid.NewGuid().ToString();
         }
     }
 }

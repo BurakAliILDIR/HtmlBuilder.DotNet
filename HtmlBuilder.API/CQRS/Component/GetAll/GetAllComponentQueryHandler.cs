@@ -19,7 +19,7 @@ namespace HtmlBuilder.API.CQRS.Component.GetAll
 
         public async Task<GetAllComponentQueryResponse> Handle(GetAllComponentQueryRequest request, CancellationToken cancellationToken)
         {
-            var result = await _dbContext.Pages.ToListAsync();
+            var result = await _dbContext.Components.ToListAsync();
 
             var data = _mapper.Map<List<GetAllComponentDto>>(result);
 
