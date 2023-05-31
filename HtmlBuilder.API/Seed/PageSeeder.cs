@@ -16,8 +16,8 @@ namespace HtmlBuilder.Repository.Seed
 
             builder.HasData(new List<Page>()
             {
-                new() { Name= "Home Page",  Html= "", Css = "", },
-                new() { Name= "About Page",  Html= "", Css = "", },
+                new() { Name= "Home Page", Route = "/home",  Html= "", Css = "", },
+                new() { Name= "About Page", Route = "/about", Html= "", Css = "", },
             }); ;
         }
     }
