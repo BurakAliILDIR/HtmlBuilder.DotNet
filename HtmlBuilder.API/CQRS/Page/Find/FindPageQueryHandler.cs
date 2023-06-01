@@ -3,6 +3,7 @@ using HtmlBuilder.API.CQRS.Page.GetAll;
 using HtmlBuilder.API.CQRS.User.GetAll;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace HtmlBuilder.API.CQRS.Page.Find;
 
@@ -19,7 +20,9 @@ public class FindPageQueryHandler : IRequestHandler<FindPageQueryRequest, FindPa
 
     public async Task<FindPageQueryResponse> Handle(FindPageQueryRequest request, CancellationToken cancellationToken)
     {
-        var result = await _dbContext.Pages.FindAsync(request.Id);
+        var id = WebUtility.UrlDecode(request.Id);
+
+        var result = await _dbContext.Pages.FindAsync(id);
 
         var data = _mapper.Map<FindPageDto>(result);
 

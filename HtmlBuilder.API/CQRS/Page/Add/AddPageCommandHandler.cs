@@ -15,8 +15,8 @@ namespace HtmlBuilder.API.CQRS.Page.Add
         {
             var page = new Entities.Page();
 
+            page.Id = request.Id;
             page.Name = request.Name;
-            page.Route = request.Route;
 
             _dbContext.Pages.Add(page);
 
